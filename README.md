@@ -12,7 +12,7 @@ For a more in depth description please consult the assessment PDF via this [link
 
 ## Client Requirements
 
-- Any if the latest Windows, macOS, or Linux operating systems
+- Any of the latest Windows, macOS, or Linux operating systems
 - OpenJdk 8, or Oracle JDK 8 (also runs against JDK 11)
 
 ## How to Build
@@ -38,7 +38,7 @@ Execute the application with the following command:
 
 > Executing the first time produces the following help screen: 
 
-```shell
+```
 Nothing to do!
 Rank My B!ts
 Usage: rankmybits [-hV] [FILE | [--stdin]] [--sort-by-team | --sort-by-ranking] [COMMAND]
