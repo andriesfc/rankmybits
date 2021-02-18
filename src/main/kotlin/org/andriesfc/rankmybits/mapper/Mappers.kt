@@ -1,7 +1,7 @@
-package org.andriesfc.rankmeb.mapper
+package org.andriesfc.rankmybits.mapper
 
-import org.andriesfc.rankmeb.core.ScoreCard
-import org.andriesfc.rankmeb.core.TeamScore
+import org.andriesfc.rankmybits.core.ScoreCard
+import org.andriesfc.rankmybits.core.TeamScore
 
 
 /**

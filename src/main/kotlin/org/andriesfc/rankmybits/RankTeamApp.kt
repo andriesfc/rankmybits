@@ -1,8 +1,12 @@
-package org.andriesfc.rankmeb
+@file:Suppress("unused")
 
-import org.andriesfc.rankmeb.core.LeagueRankBuilder
-import org.andriesfc.rankmeb.mapper.mapLineToScoreCard
+package org.andriesfc.rankmybits
+
+import org.andriesfc.rankmybits.core.LeagueRankBuilder
+import org.andriesfc.rankmybits.core.RankedTeam
+import org.andriesfc.rankmybits.mapper.mapLineToScoreCard
 import picocli.CommandLine
+import picocli.CommandLine.Option
 import java.io.BufferedReader
 import java.io.File
 import java.io.Reader
@@ -12,7 +16,7 @@ import kotlin.system.exitProcess
     description = [
         "This little app will rank league scores either from a file or standard in. "
     ],
-    name = "rankmeb",
+    name = "rankmybits",
     header = ["Rank My B!ts"],
     version = ["1.0.0-SNAPSHOT"],
     mixinStandardHelpOptions = true,
@@ -29,6 +33,36 @@ class RankTeamApp : Runnable {
         heading = "Input league scores either via standard input, or via file.%n"
     )
     internal var leagueCompetitionScoresInput: LeagueCompetitionScoresInput? = null
+
+    @CommandLine.ArgGroup(
+        validate = true,
+        exclusive = true,
+        heading = "Use any of the following ways to sort rankings:%n"
+    )
+    internal var sorting: RankingSorting? = null
+
+    override fun run() {
+
+        val input = leagueCompetitionScoresInput?.open()
+            ?: throw  CommandLine.ParameterException(spec?.commandLine(), "Nothing to do!")
+
+        val rankings = input.use { reader ->
+            LeagueRankBuilder().run {
+                for (scoreCard in reader.lines().map(::mapLineToScoreCard)) {
+                    updateRanking(scoreCard)
+                }
+                build()
+            }
+        }.let { ranked ->
+            when (val c = sorting?.comparator) {
+                null -> ranked
+                else -> ranked.sortedWith(c)
+            }
+        }
+
+        rankings.forEach(::println)
+    }
+
 
     internal class LeagueCompetitionScoresInput {
 
@@ -71,21 +105,41 @@ class RankTeamApp : Runnable {
         }
     }
 
-    override fun run() {
+    internal class RankingSorting {
 
-        val input = leagueCompetitionScoresInput?.open()
-            ?: throw  CommandLine.ParameterException(spec?.commandLine(), "Nothing to do!")
+        private var sorting: Comparator<RankedTeam>? = null
 
-        val rankings = input.use { reader ->
-            LeagueRankBuilder().run {
-                for (scoreCard in reader.lines().map(::mapLineToScoreCard)) {
-                    updateRanking(scoreCard)
-                }
-                build()
+        @Option(
+            names = ["--sort-by-team"],
+            description = [
+                "Sorts ranking by team name. Note the (this is the default)"
+            ]
+        )
+        fun setSortByTeam(b: Boolean) {
+            if (b) {
+                sorting = compareBy(RankedTeam::team)
             }
         }
 
-        rankings.forEach { println(it) }
+        @Option(
+            names = ["--sort-by-ranking"],
+            description = [
+                "Sorts by ranking in descending order (highest first)"
+            ]
+        )
+        fun setSortByRank(b: Boolean) {
+            if (b) {
+                sorting = compareByDescending(RankedTeam::points)
+            }
+        }
+
+
+        companion object {
+            private val defaultSorting = compareBy<RankedTeam>(RankedTeam::team)
+        }
+
+        val comparator: Comparator<RankedTeam>
+            get() = sorting ?: defaultSorting
     }
 
 }

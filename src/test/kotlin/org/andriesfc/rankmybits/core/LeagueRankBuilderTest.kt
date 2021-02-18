@@ -1,6 +1,6 @@
-package org.andriesfc.rankmeb.core
+package org.andriesfc.rankmybits.core
 
-import org.andriesfc.rankmeb.mapper.mapLineToScoreCard
+import org.andriesfc.rankmybits.mapper.mapLineToScoreCard
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance

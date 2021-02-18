@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package org.andriesfc.rankmeb.core
+package org.andriesfc.rankmybits.core
 
 import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Assertions.assertEquals

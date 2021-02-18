@@ -1,4 +1,4 @@
-package org.andriesfc.rankmeb.core
+package org.andriesfc.rankmybits.core
 
 
 fun interface RankingRule {

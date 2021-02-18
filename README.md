@@ -1,4 +1,4 @@
-# rankmybits
+# Rank My Bits League Games
 
 Just a fun ranking exercise.
 
@@ -12,8 +12,8 @@ For a more in depth description please consult the assessment PDF via this [link
 
 ## Client Requirements
 
-- Windows, macOS, or Linux operating system
-- OpenJdk, or Oracle JDK 8 or later
+- Any if the latest Windows, macOS, or Linux operating systems
+- OpenJdk 8, or Oracle JDK 8 (also runs against JDK 11)
 
 ## How to Build
 
@@ -24,6 +24,16 @@ For a more in depth description please consult the assessment PDF via this [link
     ```shell
    ./gradlew installDist
     ```
+## Installation
+
+From the build directory, copy the `build\install\rankmybits` folder to your application folder.
 
 ## How to execute
+
+Execute the application with the following command: 
+
+```shell
+.\rankmybits\bin\rankmybits 
+```
+
 

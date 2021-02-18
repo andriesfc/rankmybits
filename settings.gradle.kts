@@ -1,2 +1,2 @@
-rootProject.name = "rankmeb"
+rootProject.name = "rankmybits"
 

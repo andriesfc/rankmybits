@@ -22,7 +22,8 @@ tasks.withType<JavaCompile> {
 }
 
 application {
-    mainClass.set("org.andriesfc.rankmeb.AppKt")
+    mainClass.set("org.andriesfc.rankmybits.RankTeamAppKt")
+
 }
 
 tasks.withType<KotlinCompile>().configureEach {
