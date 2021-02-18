@@ -36,4 +36,22 @@ Execute the application with the following command:
 .\rankmybits\bin\rankmybits 
 ```
 
+> Executing the first time produces the following help screen: 
+
+```shell
+Nothing to do!
+Rank My B!ts
+Usage: rankmybits [-hV] [FILE | [--stdin]] [--sort-by-team | --sort-by-ranking] [COMMAND]
+This little app will rank league scores either from a file or standard in.
+  -h, --help              Show this help message and exit.
+  -V, --version           Print version information and exit.
+Input league scores either via standard input, or via file.
+      FILE                The file to read league scores from.
+      --stdin             Read from ranking file from STDIN
+Use any of the following ways to sort rankings:
+      --sort-by-ranking   Sorts by ranking in descending order (highest first)
+      --sort-by-team      Sorts ranking by team name. Note the (this is the default)
+Commands:
+  help  Displays help information about the specified command
+```
 
