@@ -55,3 +55,24 @@ Commands:
   help  Displays help information about the specified command
 ```
 
+## How to use
+
+### Processing sample file
+
+> You have to be in the project directory for these samples to work as it.
+
+The sample test file can be found at [src/test/resource/sample_scores.txt](src/test/resources/sample_scores.txt).
+
+#### Process scores from a file.
+
+```shell
+./build/install/rankmybits/bin/rankmybits ./src/test/resources/sample_scores.txt
+```
+
+#### From STDIN
+
+```shell
+cat ./src/test/resources/sample_scores.txt | ./build/install/rankmybits/bin/rankmybits --stdin --sort-by-ranking
+```
+
+
