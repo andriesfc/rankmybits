@@ -72,7 +72,7 @@ The sample test file can be found at [src/test/resource/sample_scores.txt](src/t
 #### From STDIN
 
 ```shell
-cat ./src/test/resources/sample_scores.txt | ./build/install/rankmybits/bin/rankmybits --stdin --sort-by-ranking
+cat ./src/test/resources/sample_scores.txt | ./build/install/rankmybits/bin/rankmybits --stdin
 ```
 
 
