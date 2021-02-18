@@ -38,61 +38,55 @@ internal class ScoreCardTests {
         println(actual.message)
     }
 
-    companion object {
-
-        /**
-         * ```
-         * 1: Lions 3, Snakes 3
-         * 2: Tarantulas 1, FC Awesome 0
-         * 3: Lions 1, FC Awesome 1
-         * 4: Tarantulas 3, Snakes 1
-         * 5: Lions 4, Grouches 0
-         * ```
-         */
-        @JvmStatic
-        fun testScoreCards() = listOf(
-            testParametersOf(
-                ScoreCard(
-                    TeamScore("Lions", 3),
-                    TeamScore("Snakes", 3)
-                ),
-                Outcome.TIE,
-                Outcome.TIE
+    /**
+     * ```
+     * 1: Lions 3, Snakes 3
+     * 2: Tarantulas 1, FC Awesome 0
+     * 3: Lions 1, FC Awesome 1
+     * 4: Tarantulas 3, Snakes 1
+     * 5: Lions 4, Grouches 0
+     * ```
+     */
+    fun testScoreCards() = listOf(
+        testParametersOf(
+            ScoreCard(
+                TeamScore("Lions", 3),
+                TeamScore("Snakes", 3)
             ),
-            testParametersOf(
-                ScoreCard(
-                    TeamScore("Tarantulas", 1),
-                    TeamScore("FC Awesome", 0)
-                ),
-                Outcome.WON,
-                Outcome.LOST
+            Outcome.TIE,
+            Outcome.TIE
+        ),
+        testParametersOf(
+            ScoreCard(
+                TeamScore("Tarantulas", 1),
+                TeamScore("FC Awesome", 0)
             ),
-            testParametersOf(
-                ScoreCard(
-                    TeamScore("Lions", 1),
-                    TeamScore("FC Awesome", 1),
-                ),
-                Outcome.TIE,
-                Outcome.TIE
+            Outcome.WON,
+            Outcome.LOST
+        ),
+        testParametersOf(
+            ScoreCard(
+                TeamScore("Lions", 1),
+                TeamScore("FC Awesome", 1),
             ),
-            testParametersOf(
-                ScoreCard(
-                    TeamScore("Tarantulas", 3),
-                    TeamScore("Snakes", 1),
-                ),
-                Outcome.WON,
-                Outcome.LOST
+            Outcome.TIE,
+            Outcome.TIE
+        ),
+        testParametersOf(
+            ScoreCard(
+                TeamScore("Tarantulas", 3),
+                TeamScore("Snakes", 1),
             ),
-            testParametersOf(
-                ScoreCard(
-                    TeamScore("Snakes", 0),
-                    TeamScore("Team B",1)
-                ),
-                Outcome.LOST,
-                Outcome.WON
-            )
+            Outcome.WON,
+            Outcome.LOST
+        ),
+        testParametersOf(
+            ScoreCard(
+                TeamScore("Snakes", 0),
+                TeamScore("Team B",1)
+            ),
+            Outcome.LOST,
+            Outcome.WON
         )
-
-    }
-
+    )
 }
