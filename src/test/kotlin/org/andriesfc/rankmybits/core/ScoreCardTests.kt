@@ -23,8 +23,8 @@ internal class ScoreCardTests {
         expectedRightOutcome: Outcome
     ) {
         assertAll(
-            { assertEquals(expectedLeftOutCome, givenScoreCard.leftOutcome) },
-            { assertEquals(expectedRightOutcome, givenScoreCard.rightOutcome) }
+            { assertEquals(expectedLeftOutCome, givenScoreCard[0].second) },
+            { assertEquals(expectedRightOutcome, givenScoreCard[1].second) }
         )
     }
 
@@ -82,8 +82,8 @@ internal class ScoreCardTests {
         ),
         testParametersOf(
             ScoreCard(
-                TeamScore("Snakes", 0),
-                TeamScore("Team B",1)
+                "Snakes" to 0,
+                "Team B" to 1
             ),
             Outcome.LOST,
             Outcome.WON

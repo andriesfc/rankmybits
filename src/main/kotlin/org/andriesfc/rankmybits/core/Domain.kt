@@ -15,23 +15,25 @@ val defaultRankingRule = RankingRule { outcome ->
 
 class LeagueRankBuilder(private val rule: RankingRule = defaultRankingRule) {
 
-    private val rankings = mutableMapOf<String, Int>()
+    private val teamRankings = mutableMapOf<String, Int>()
 
     fun updateRanking(scoreCard: ScoreCard) {
-        update(scoreCard.left.team, rule.scoreOutcome(scoreCard.leftOutcome))
-        update(scoreCard.right.team, rule.scoreOutcome(scoreCard.rightOutcome))
+        scoreCard.forEach { (ranked, outcome) ->
+            updateRanking(ranked.team, outcome)
+        }
     }
 
-    private fun update(team: String, ranking: Int) {
-        rankings[team] = ranking + rankings.getOrDefault(team, 0)
+    private fun updateRanking(team: String, outcome: Outcome) {
+        val current = teamRankings[team] ?: 0
+        teamRankings[team] = current + rule.scoreOutcome(outcome)
     }
 
     fun build(): List<RankedTeam> {
-        return rankings.map { (team, ranking) -> RankedTeam(team, ranking) }.sortedBy(RankedTeam::team)
+        return teamRankings.map { (team, ranking) -> RankedTeam(team, ranking) }.sortedBy(RankedTeam::team)
     }
 
     fun reset() {
-        rankings.clear()
+        teamRankings.clear()
     }
 
 }
