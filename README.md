@@ -59,7 +59,7 @@ Commands:
 
 ### Processing sample file
 
-> You have to be in the project directory for these samples to work as it.
+> You have to be in the project directory for these samples to work as is.
 
 The sample test file can be found at [src/test/resource/sample_scores.txt](src/test/resources/sample_scores.txt).
 
