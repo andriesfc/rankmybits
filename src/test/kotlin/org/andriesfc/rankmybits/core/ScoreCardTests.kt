@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.Arguments.of as testParametersOf
 
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-internal class ScoreCardTestMapParams {
+internal class ScoreCardTests {
 
     @ParameterizedTest
     @MethodSource("testScoreCards")

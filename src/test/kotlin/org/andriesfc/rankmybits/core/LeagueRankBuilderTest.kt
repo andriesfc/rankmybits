@@ -52,16 +52,14 @@ internal class LeagueRankBuilderTest {
             actualRanking.size,
         ) { "expectedRanking.size(${expectedRanking.size}) != actualRaking.size(${actualRanking.size})" }
 
-        val assertions = mutableListOf<() -> Unit>()
-
-        expectedRanking.withIndex().map { (i, expected) ->
-            {
-                val actual = actualRanking.getOrNull(i)
-                assertEquals(expected, actual) {
-                    "Expected ranking at ${i + 1}"
+        val assertions = mutableListOf<() -> Unit>().apply {
+            expectedRanking.withIndex().forEach { (i, expected) ->
+                add {
+                    val actual = actualRanking.getOrNull(i)
+                    assertEquals(expected, actual) { "Expected ranking at ${i + 1}" }
                 }
             }
-        }.forEach { assertions += it }
+        }
 
         assertAll(assertions)
     }
