@@ -4,7 +4,7 @@ package org.andriesfc.rankmybits
 
 import org.andriesfc.rankmybits.core.LeagueRankBuilder
 import org.andriesfc.rankmybits.core.RankedTeam
-import org.andriesfc.rankmybits.mapper.mapLineToScoreCard
+import org.andriesfc.rankmybits.parser.parseScoreCardLine
 import picocli.CommandLine
 import picocli.CommandLine.Option
 import java.io.BufferedReader
@@ -48,7 +48,7 @@ class RankTeamApp : Runnable {
 
         val rankings = input.use { reader ->
             LeagueRankBuilder().run {
-                for (scoreCard in reader.lines().map(::mapLineToScoreCard)) {
+                for (scoreCard in reader.lines().map(::parseScoreCardLine)) {
                     updateRanking(scoreCard)
                 }
                 build()

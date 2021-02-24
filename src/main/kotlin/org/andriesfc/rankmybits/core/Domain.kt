@@ -5,7 +5,7 @@ fun interface RankingRule {
     fun scoreOutcome(outcome: Outcome): Int
 }
 
-val defaultRankingRule = RankingRule { outcome ->
+private val defaultRankingRule = RankingRule { outcome ->
     when (outcome) {
         Outcome.LOST -> 0
         Outcome.TIE -> 1

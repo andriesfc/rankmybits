@@ -1,12 +1,11 @@
 package org.andriesfc.rankmybits.core
 
 
-enum class Outcome : Comparable<Outcome> {
+enum class Outcome {
     LOST,
     TIE,
     WON;
 }
-
 
 data class TeamScore(val team: String, val score: Int) : Comparable<TeamScore> {
     override fun compareTo(other: TeamScore): Int {
@@ -70,10 +69,9 @@ data class ScoreCard(val left: TeamScore, val right: TeamScore) : AbstractCollec
         }
     }
 
-
 }
 
 data class RankedTeam(val team: String, val points: Int) : Comparable<RankedTeam> {
-    override fun toString(): String = "$team, $points pts"
+    override fun toString(): String = "$team, $points ${if (points == 1) "pt" else "pts"}"
     override fun compareTo(other: RankedTeam): Int = points.compareTo(other.points)
 }

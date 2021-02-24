@@ -1,4 +1,4 @@
-package org.andriesfc.rankmybits.mapper
+package org.andriesfc.rankmybits.parser
 
 import org.andriesfc.rankmybits.core.ScoreCard
 import org.andriesfc.rankmybits.core.TeamScore
@@ -15,7 +15,7 @@ import org.andriesfc.rankmybits.core.TeamScore
  * 5: Lions 4, Grouches 0
  * ```
  */
-fun mapLineToScoreCard(scoreCardLine: String): ScoreCard {
+fun parseScoreCardLine(scoreCardLine: String): ScoreCard {
 
     fun failNoScoreFound(s: String? = scoreCardLine): Nothing = throw IllegalArgumentException(
         "No Score card found in score found [$s}]"

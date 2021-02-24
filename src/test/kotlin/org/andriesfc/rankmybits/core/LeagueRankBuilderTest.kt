@@ -1,6 +1,6 @@
 package org.andriesfc.rankmybits.core
 
-import org.andriesfc.rankmybits.mapper.mapLineToScoreCard
+import org.andriesfc.rankmybits.parser.parseScoreCardLine
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -80,7 +80,7 @@ internal class LeagueRankBuilderTest {
             Lions 1, FC Awesome 1
             Tarantulas 3, Snakes 1
             Lions 4, Grouches 0
-        """.trimIndent().lineSequence().map { mapLineToScoreCard(it) }.toSet()
+        """.trimIndent().lineSequence().map { parseScoreCardLine(it) }.toSet()
     }
 
     private fun giveRankBuilderWithDefaultRule() {

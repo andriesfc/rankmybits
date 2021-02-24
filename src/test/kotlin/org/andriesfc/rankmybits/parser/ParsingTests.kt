@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package org.andriesfc.rankmybits.mapper
+package org.andriesfc.rankmybits.parser
 
 import org.andriesfc.rankmybits.core.ScoreCard
 import org.andriesfc.rankmybits.core.TeamScore
@@ -12,12 +12,12 @@ import org.junit.jupiter.params.provider.MethodSource
 
 
 @TestInstance(Lifecycle.PER_CLASS)
-internal class MappersKtTest {
+internal class ParsingTests {
 
     @ParameterizedTest
     @MethodSource("mapLineToScoreCardTest")
     fun mapLineToScoreCardTest(cardTestMapParams: ScoreCardTestMapParams) {
-        val actualScoreCard = mapLineToScoreCard(cardTestMapParams.givenScoreCardLine)
+        val actualScoreCard = parseScoreCardLine(cardTestMapParams.givenScoreCardLine)
         assertEquals(cardTestMapParams.expectedScoreCard, actualScoreCard)
 
     }
